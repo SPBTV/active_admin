@@ -86,6 +86,32 @@ RSpec.describe ActiveAdmin::Resource::Routes do
     end
   end
 
+  context "when the resource belongs to another resource with an association name not following rails convention" do
+    let(:config) { namespace.resource_for('Post') }
+
+    let :post do
+      Post.new do |p|
+        p.id = 3
+        p.author = User.new{ |c| c.id = 1 }
+      end
+    end
+
+    before do
+      load_resources do
+        ActiveAdmin.register User
+        ActiveAdmin.register(Post) { belongs_to :author, class_name: 'User' }
+      end
+    end
+
+    it "should nest the collection path" do
+      expect(config.route_collection_path(user_id: 1)).to eq "/admin/users/1/posts"
+    end
+
+    it "should nest the instance path" do
+      expect(config.route_instance_path(post)).to eq "/admin/users/1/posts/3"
+    end
+  end
+
   context "for batch_action handler" do
     before do
       load_resources { config.batch_actions = true }

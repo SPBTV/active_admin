@@ -13,6 +13,7 @@ module ActiveAdmin
 
       # The resource which initiated this relationship
       attr_reader :owner
+      attr_reader :target_name
 
       def initialize(owner, target_name, options = {})
         @owner, @target_name, @options = owner, target_name, options
