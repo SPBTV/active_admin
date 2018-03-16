@@ -47,7 +47,7 @@ $(function() {
       const regex = new RegExp($(this).data('placeholder'), 'g');
       const html  = $(this).data('html').replace(regex, index);
 
-      const fieldset = $(html).insertBefore(parent.find('a.button.has_many_add').first());
+      const fieldset = $(html).insertBefore(this);
       recompute_positions(parent);
       return parent.trigger('has_many_add:after', [fieldset, parent]);
     }
@@ -66,8 +66,13 @@ var init_sortable = function() {
   elems.sortable({
     items: '> fieldset',
     handle: '> ol > .handle',
-    start: (ev, ui) => { ui.item.css({opacity: 0.3})},
-    stop:  (ev, ui) => { ui.item.css({opacity: 1.0}); recompute_positions }
+    start: (ev, ui) => {
+      ui.item.css({opacity: 0.3});
+    },
+    stop: function (ev, ui) {
+      ui.item.css({opacity: 1.0});
+      recompute_positions($(this));
+    }
   });
   elems.each(recompute_positions);
 };
