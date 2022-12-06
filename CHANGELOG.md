@@ -2,6 +2,83 @@
 
 ## Unreleased
 
+## 2.13.1 [☰](https://github.com/activeadmin/activeadmin/compare/v2.13.0..v2.13.1)
+
+### Bug Fixes
+
+* Honor load paths order when loading admin files. [#7488] by [@tf]
+* Fix passing expected hash payload argument. [#7487] by [@ispyropoulos]
+
+## 2.13.0 [☰](https://github.com/activeadmin/activeadmin/compare/v2.12.0..v2.13.0)
+
+### Documentation
+
+* Update validation errors documentation to account for deprecated `ActiveModel::Errors#keys`. [#7475] by [@amit]
+
+### Dependency Changes
+
+* Drop rails 6.0 support. [#7476] by [@deivid-rodriguez]
+
+### Performance
+
+* Fix pundit performance. [#7479] by [@deivid-rodriguez]
+
+## 2.12.0 [☰](https://github.com/activeadmin/activeadmin/compare/v2.11.2..v2.12.0)
+
+### Enhancements
+
+* Add Ransack 3 compatibility. [#7453] by [@tagliala]
+
+### Bug Fixes
+
+* Fix pundit namespace detection. [#7144] by [@vlad-psh]
+
+### Documentation
+
+* Don't mention webpacker as the default asset generator in Rails. [#7377] by [@jaynetics]
+
+### Performance
+
+* Avoid duplicate work when downloading CSV. [#7336] by [@deivid-rodriguez]
+
+## 2.11.2 [☰](https://github.com/activeadmin/activeadmin/compare/v2.11.1..v2.11.2)
+
+### Bug Fixes
+
+* Fix disappearing BOM option for `CSVBuilder`. [#7170] by [@Karoid]
+
+## 2.11.1 [☰](https://github.com/activeadmin/activeadmin/compare/v2.11.0..v2.11.1)
+
+### Enhancements
+
+* Add turbolinks support to has many js. [#7384] by [@amiel]
+
+### Documentation
+
+* Remove `insert_tag` from Form-Partial docs. [#7394] by [@TonyArra]
+
+## 2.11.0 [☰](https://github.com/activeadmin/activeadmin/compare/v2.10.1..v2.11.0)
+
+### Enhancements
+
+* Add Rails 7 Support. [#7235] by [@tagliala]
+
+### Bug Fixes
+
+* Fix form SCSS variables no longer being defined in the outermost scope, so no longer being accessible. [#7341] by [@gigorok]
+
+## 2.10.1 [☰](https://github.com/activeadmin/activeadmin/compare/v2.10.0..v2.10.1)
+
+### Enhancements
+
+* Apply `box-sizing: border-box` globally. [#7349] by [@deivid-rodriguez]
+* Vendor normalize 8.0.1. [#7350] by [@deivid-rodriguez]
+* Remove deprecation warning using controller filters inside initializer. [#7340] by [@mgrunberg]
+
+### Bug Fixes
+
+* Fix frozen string error when downloading CSV and streaming disabled. [#7332] by [@deivid-rodriguez]
+
 ## 2.10.0 [☰](https://github.com/activeadmin/activeadmin/compare/v2.9.0..v2.10.0)
 
 ### Enhancements
@@ -698,11 +775,29 @@ Please check [0-6-stable] for previous changes.
 [#6959]: https://github.com/activeadmin/activeadmin/pull/6959
 [#7095]: https://github.com/activeadmin/activeadmin/pull/7095
 [#7127]: https://github.com/activeadmin/activeadmin/pull/7127
+[#7144]: https://github.com/activeadmin/activeadmin/pull/7144
+[#7170]: https://github.com/activeadmin/activeadmin/pull/7170
 [#7181]: https://github.com/activeadmin/activeadmin/pull/7181
 [#7205]: https://github.com/activeadmin/activeadmin/pull/7205
+[#7235]: https://github.com/activeadmin/activeadmin/pull/7235
 [#7236]: https://github.com/activeadmin/activeadmin/pull/7236
 [#7262]: https://github.com/activeadmin/activeadmin/pull/7262
 [#7293]: https://github.com/activeadmin/activeadmin/pull/7293
+[#7332]: https://github.com/activeadmin/activeadmin/pull/7332
+[#7336]: https://github.com/activeadmin/activeadmin/pull/7336
+[#7340]: https://github.com/activeadmin/activeadmin/pull/7340
+[#7341]: https://github.com/activeadmin/activeadmin/pull/7341
+[#7349]: https://github.com/activeadmin/activeadmin/pull/7349
+[#7350]: https://github.com/activeadmin/activeadmin/pull/7350
+[#7377]: https://github.com/activeadmin/activeadmin/pull/7377
+[#7384]: https://github.com/activeadmin/activeadmin/pull/7384
+[#7394]: https://github.com/activeadmin/activeadmin/pull/7394
+[#7453]: https://github.com/activeadmin/activeadmin/pull/7453
+[#7475]: https://github.com/activeadmin/activeadmin/pull/7475
+[#7476]: https://github.com/activeadmin/activeadmin/pull/7476
+[#7479]: https://github.com/activeadmin/activeadmin/pull/7479
+[#7487]: https://github.com/activeadmin/activeadmin/pull/7487
+[#7488]: https://github.com/activeadmin/activeadmin/pull/7488
 
 [@1000ship]: https://github.com/1000ship
 [@5t111111]: https://github.com/5t111111
@@ -713,6 +808,7 @@ Please check [0-6-stable] for previous changes.
 [@alejandroperea]: https://github.com/alejandroperea
 [@alex-bogomolov]: https://github.com/alex-bogomolov
 [@amiel]: https://github.com/amiel
+[@amit]: https://github.com/amit
 [@amiuhle]: https://github.com/amiuhle
 [@andreslemik]: https://github.com/andreslemik
 [@bartoszkopinski]: https://github.com/bartoszkopinski
@@ -740,6 +836,7 @@ Please check [0-6-stable] for previous changes.
 [@Fs00]: https://github.com/Fs00
 [@fuzziness]: https://github.com/fuzziness
 [@giapnhdev]: https://github.com/giapnhdev
+[@gigorok]: https://github.com/gigorok
 [@glebtv]: https://github.com/glebtv
 [@gonzedge]: https://github.com/gonzedge
 [@guigs]: https://github.com/guigs
@@ -748,17 +845,20 @@ Please check [0-6-stable] for previous changes.
 [@innparusu95]: https://github.com/innparusu95
 [@ionut998]: https://github.com/ionut998
 [@irmela]: https://github.com/irmela
+[@ispyropoulos]: https://github.com/ispyropoulos
 [@Ivanov-Anton]: https://github.com/Ivanov-Anton
 [@jasl]: https://github.com/jasl
 [@javawizard]: https://github.com/javawizard
 [@javierjulio]: https://github.com/javierjulio
 [@jawa]: https://github.com/jawa
+[@jaynetics]: https://github.com/jaynetics
 [@JiiHu]: https://github.com/JiiHu
 [@jiikko]: https://github.com/jiikko
 [@johnnyshields]: https://github.com/johnnyshields
 [@jscheid]: https://github.com/jscheid
 [@juril33t]: https://github.com/juril33t
 [@jwesorick]: https://github.com/jwesorick
+[@Karoid]: https://github.com/Karoid
 [@kjeldahl]: https://github.com/kjeldahl
 [@ko-lem]: https://github.com/ko-lem
 [@kobeumut]: https://github.com/kobeumut
@@ -772,6 +872,7 @@ Please check [0-6-stable] for previous changes.
 [@markstory]: https://github.com/markstory
 [@mauriciopasquier]: https://github.com/mauriciopasquier
 [@mconiglio]: https://github.com/mconiglio
+[@mgrunberg]: https://github.com/mgrunberg
 [@micred]: https://github.com/micred
 [@mirelon]: https://github.com/mirelon
 [@MmKolodziej]: https://github.com/MmKolodziej
@@ -801,11 +902,14 @@ Please check [0-6-stable] for previous changes.
 [@sprql]: https://github.com/sprql
 [@stefsava]: https://github.com/stefsava
 [@stereoscott]: https://github.com/stereoscott
+[@tagliala]: https://github.com/tagliala
 [@taralbass]: https://github.com/taralbass
+[@tf]: https://github.com/tf
 [@tiagotex]: https://github.com/tiagotex
 [@timoschilling]: https://github.com/timoschilling
 [@TimPetricola]: https://github.com/TimPetricola
 [@tomgilligan]: https://github.com/tomgilligan
+[@TonyArra]: https://github.com/TonyArra
 [@tordans]: https://github.com/tordans
 [@utkarsh2102]: https://github.com/utkarsh2102
 [@varyonic]: https://github.com/varyonic

@@ -392,7 +392,6 @@
     $(document).on("change", '.has_many_container[data-sortable] :input[name$="[_destroy]"]', function() {
       recompute_positions($(this).closest(".has_many"));
     });
-    init_sortable();
     $(document).on("has_many_add:after", ".has_many_container", init_sortable);
   });
   var init_sortable = function init_sortable() {
@@ -426,6 +425,7 @@
       }
     });
   };
+  $(document).ready(init_sortable).on("page:load turbolinks:load", init_sortable);
   var PerPage = function() {
     function PerPage(element) {
       this.element = element;
@@ -474,7 +474,7 @@
     _setPrototypeOf(subClass, superClass);
   }
   function _setPrototypeOf(o, p) {
-    _setPrototypeOf = Object.setPrototypeOf || function _setPrototypeOf(o, p) {
+    _setPrototypeOf = Object.setPrototypeOf ? Object.setPrototypeOf.bind() : function _setPrototypeOf(o, p) {
       o.__proto__ = p;
       return o;
     };

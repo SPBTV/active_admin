@@ -76,7 +76,7 @@ module ActiveAdmin
 
       namespace = namespaces[name.to_sym] ||= begin
         namespace = Namespace.new(self, name)
-        ActiveSupport::Notifications.instrument ActiveAdmin::Namespace::RegisterEvent, namespace
+        ActiveSupport::Notifications.instrument ActiveAdmin::Namespace::RegisterEvent, { active_admin_namespace: namespace }
         namespace
       end
 
@@ -112,10 +112,10 @@ module ActiveAdmin
     # To reload everything simply call `ActiveAdmin.unload!`
     def load!
       unless loaded?
-        ActiveSupport::Notifications.instrument BeforeLoadEvent, self # before_load hook
+        ActiveSupport::Notifications.instrument BeforeLoadEvent, { active_admin_application: self } # before_load hook
         files.each { |file| load file } # load files
         namespace(default_namespace) # init AA resources
-        ActiveSupport::Notifications.instrument AfterLoadEvent, self # after_load hook
+        ActiveSupport::Notifications.instrument AfterLoadEvent, { active_admin_application: self } # after_load hook
         @@loaded = true
       end
     end
@@ -126,7 +126,7 @@ module ActiveAdmin
 
     # Returns ALL the files to be loaded
     def files
-      load_paths.flatten.compact.uniq.flat_map { |path| Dir["#{path}/**/*.rb"] }.sort
+      load_paths.flatten.compact.uniq.flat_map { |path| Dir["#{path}/**/*.rb"].sort }
     end
 
     # Creates all the necessary routes for the ActiveAdmin configurations
@@ -150,8 +150,8 @@ module ActiveAdmin
     AbstractController::Callbacks::ClassMethods.public_instance_methods.
       select { |m| m.match(/_action\z/) }.each do |name|
       define_method name do |*args, &block|
-        controllers_for_filters.each do |controller|
-          controller.public_send name, *args, &block
+        ActiveSupport.on_load(:active_admin_controller) do
+          public_send name, *args, &block
         end
       end
     end
