@@ -5,9 +5,9 @@ create_file "app/assets/stylesheets/some-random-css.css"
 create_file "app/assets/javascripts/some-random-js.js"
 create_file "app/assets/images/a/favicon.ico"
 
-<<<<<<< HEAD
 generate :model, 'post type:string title:string body:text published_date:date author_id:integer ' +
   'position:integer custom_category_id:integer starred:boolean foo_id:integer'
+
 create_file 'app/models/post.rb', <<-RUBY.strip_heredoc, force: true
   class Post < ActiveRecord::Base
     belongs_to :category, foreign_key: :custom_category_id
@@ -15,9 +15,12 @@ create_file 'app/models/post.rb', <<-RUBY.strip_heredoc, force: true
     has_many :taggings
     accepts_nested_attributes_for :author
     accepts_nested_attributes_for :taggings, allow_destroy: true
+  end
 
-=======
->>>>>>> source/master
+  class AnonymousPost < Post
+  end
+RUBY
+
 initial_timestamp = Time.now.strftime("%Y%M%d%H%M%S").to_i
 
 template File.expand_path("templates/migrations/create_posts.tt", __dir__), "db/migrate/#{initial_timestamp}_create_posts.rb"
@@ -26,14 +29,11 @@ copy_file File.expand_path("templates/models/post.rb", __dir__), "app/models/pos
 copy_file File.expand_path("templates/post_decorator.rb", __dir__), "app/models/post_decorator.rb"
 copy_file File.expand_path("templates/post_poro_decorator.rb", __dir__), "app/models/post_poro_decorator.rb"
 
-  end
-  class AnonymousPost < Post
-  end
-RUBY
 copy_file File.expand_path('../templates/post_decorator.rb', __FILE__), 'app/models/post_decorator.rb'
 
 generate :model, 'blog/post title:string body:text published_date:date author_id:integer ' +
   'position:integer custom_category_id:integer starred:boolean foo_id:integer'
+
 create_file 'app/models/blog/post.rb', <<-RUBY.strip_heredoc, force: true
   class Blog::Post < ActiveRecord::Base
     belongs_to :category, foreign_key: :custom_category_id
@@ -41,6 +41,8 @@ create_file 'app/models/blog/post.rb', <<-RUBY.strip_heredoc, force: true
     has_many :taggings
     accepts_nested_attributes_for :author
     accepts_nested_attributes_for :taggings, allow_destroy: true
+  end
+RUBY
 
 copy_file File.expand_path("templates/models/blog/post.rb", __dir__), "app/models/blog/post.rb"
 
