@@ -15,8 +15,12 @@ group :development, :test do
   gem "sprockets-rails"
   gem "sassc-rails"
 
-  gem "cssbundling-rails"
-  gem "jsbundling-rails"
+  # FIXME: relax these dependencies when Ruby 3.0 support will be dropped
+  gem "nokogiri", "~> 1.17.2"
+  gem "securerandom", "~> 0.3.2"
+
+  # FIXME: relax this dependency when Ruby 3.1 support will be dropped
+  gem "zeitwerk", "~> 2.6.18"
 end
 
 group :test do
@@ -28,11 +32,11 @@ group :test do
   gem "simplecov-cobertura", require: false
   gem "cucumber-rails", require: false
   gem "cucumber"
-  gem "database_cleaner"
+  gem "database_cleaner-active_record"
   gem "launchy"
   gem "parallel_tests"
   gem "rspec-rails"
-  gem "sqlite3", platform: :mri
+  gem "sqlite3", "~> 1.7", platform: :mri
 
   # Translations
   gem "i18n-tasks"

@@ -2,6 +2,92 @@
 
 ## Unreleased
 
+## 3.4.0 [☰](https://github.com/activeadmin/activeadmin/compare/v3.3.0..v3.4.0)
+
+* Add Rails 8.1 compatibility and drop Ruby < 3.0 support [#8837] by [@tagliala]
+
+## 3.3.0 [☰](https://github.com/activeadmin/activeadmin/compare/v3.2.5..v3.3.0)
+
+### Enhancements
+
+* Improve v3 docs regarding compatibility with vite_rails [#8548] by [@mattbrictson]
+* Backport test against Rails 8.0 [#8556] by [@mgrunberg] and [@tagliala]
+* Test against Ruby 3.4 [#8614] by [@tagliala]
+* Backport Support sortable argument in id_column [#8650] by [@jaynetics]
+* Backport Support title for id_column [#8652] by [@mgrunberg]
+
+### Bug Fixes
+
+* Backport Fix attributes passed to form has_many not being set on new record form items [#8551] by [@Fs00]
+* Backport Fix deprecation warning in Ruby 3.4 [#8596] by [@tagliala]
+* Backport Fix circular require warning in belongs_to.rb [#8601] by [@tagliala]
+
+## 3.2.5 [☰](https://github.com/activeadmin/activeadmin/compare/v3.2.4..v3.2.5)
+
+### Enhancements
+
+* Backport Add favicon to template app to fix Rails 7.2 test suite run [#8468] by [@mgrunberg]
+* Backport Use attribute_types instead of columns_hash to determine type [#8469] by [@mgrunberg]
+* Backport Optimize count query for pagination_total: false option [#8470] by [@mgrunberg]
+
+### Bug Fixes
+
+* Restore inner span tag to form inputs legend [#8467] by [@denisahearn]
+
+## 3.2.4 [☰](https://github.com/activeadmin/activeadmin/compare/v3.2.3..v3.2.4)
+
+### Enhancements
+
+* Test against Rails 7.2 [#8434] by [@mgrunberg]
+
+### Bug Fixes
+
+* Backport Improve form f.inputs attributes rendering [#8446] by [@amiel]
+
+## 3.2.3 [☰](https://github.com/activeadmin/activeadmin/compare/v3.2.2..v3.2.3)
+
+### Enhancements
+
+* Backport better implementation of counter-cache-column check [#8412] by [@plashchynski]
+
+### Bug Fixes
+
+* Remove deprecation warnings when building with dart sass >= 1.77.7 [#8405] by [@mgrunberg]
+
+## 3.2.2 [☰](https://github.com/activeadmin/activeadmin/compare/v3.2.1..v3.2.2)
+
+### Security Fixes
+
+* Backport Fix potential XSS issue when rendering form legends [#8349] by
+  [@deivid-rodriguez]
+
+### Enhancements
+
+* Update vendored jQuery UI to 1.13.3 [#8329] by [@tagliala]
+
+## 3.2.1 [☰](https://github.com/activeadmin/activeadmin/compare/v3.2.0..v3.2.1)
+
+### Enhancements
+
+* Backport Suppress ruby 3.3 warning [#8310] by [@mgrunberg]
+* Backport Recommend using target="_blank" instead of target="blank" [#8311] by [@mgrunberg]
+
+## 3.2.0 [☰](https://github.com/activeadmin/activeadmin/compare/v3.1.0..v3.2.0)
+
+### Security Fixes
+
+* Backport protect against CSV Injection. [#8167] by [@mgrunberg]
+
+### Enhancements
+
+* Backport support citext column type in string filter. [#8165] by [@mgrunberg]
+* Backport provide detail in DB statement timeout error for filters. [#8163] by [@mgrunberg]
+
+### Bug Fixes
+
+* Backport make sure menu creation does not modify menu options. [#8166] by [@mgrunberg]
+* Backport ransack error with filters when ActiveStorage is used. [#8164] by [@mgrunberg]
+
 ## 3.1.0 [☰](https://github.com/activeadmin/activeadmin/compare/v3.0.0..v3.1.0)
 
 ### Enhancements
@@ -877,8 +963,32 @@ Please check [0-6-stable] for previous changes.
 [#8102]: https://github.com/activeadmin/activeadmin/pull/8102
 [#8105]: https://github.com/activeadmin/activeadmin/pull/8105
 [#8106]: https://github.com/activeadmin/activeadmin/pull/8106
-
-
+[#8163]: https://github.com/activeadmin/activeadmin/pull/8163
+[#8164]: https://github.com/activeadmin/activeadmin/pull/8164
+[#8165]: https://github.com/activeadmin/activeadmin/pull/8165
+[#8166]: https://github.com/activeadmin/activeadmin/pull/8166
+[#8167]: https://github.com/activeadmin/activeadmin/pull/8167
+[#8310]: https://github.com/activeadmin/activeadmin/pull/8310
+[#8311]: https://github.com/activeadmin/activeadmin/pull/8311
+[#8329]: https://github.com/activeadmin/activeadmin/pull/8329
+[#8349]: https://github.com/activeadmin/activeadmin/pull/8349
+[#8405]: https://github.com/activeadmin/activeadmin/pull/8405
+[#8412]: https://github.com/activeadmin/activeadmin/pull/8412
+[#8434]: https://github.com/activeadmin/activeadmin/pull/8434
+[#8446]: https://github.com/activeadmin/activeadmin/pull/8446
+[#8467]: https://github.com/activeadmin/activeadmin/pull/8467
+[#8468]: https://github.com/activeadmin/activeadmin/pull/8468
+[#8469]: https://github.com/activeadmin/activeadmin/pull/8469
+[#8470]: https://github.com/activeadmin/activeadmin/pull/8470
+[#8548]: https://github.com/activeadmin/activeadmin/pull/8548
+[#8551]: https://github.com/activeadmin/activeadmin/pull/8551
+[#8556]: https://github.com/activeadmin/activeadmin/pull/8556
+[#8596]: https://github.com/activeadmin/activeadmin/pull/8596
+[#8601]: https://github.com/activeadmin/activeadmin/pull/8601
+[#8614]: https://github.com/activeadmin/activeadmin/pull/8614
+[#8650]: https://github.com/activeadmin/activeadmin/pull/8650
+[#8652]: https://github.com/activeadmin/activeadmin/pull/8652
+[#8837]: https://github.com/activeadmin/activeadmin/pull/8837
 [@1000ship]: https://github.com/1000ship
 [@5t111111]: https://github.com/5t111111
 [@aarek]: https://github.com/aarek
@@ -906,6 +1016,7 @@ Please check [0-6-stable] for previous changes.
 [@craigmcnamara]: https://github.com/craigmcnamara
 [@DanielHeath]: https://github.com/DanielHeath
 [@deivid-rodriguez]: https://github.com/deivid-rodriguez
+[@denisahearn]: https://github.com/denisahearn
 [@dennisvdvliet]: https://github.com/dennisvdvliet
 [@dhyegofernando]: https://github.com/dhyegofernando
 [@dkniffin]: https://github.com/dkniffin
@@ -957,6 +1068,7 @@ Please check [0-6-stable] for previous changes.
 [@Looooong]: https://github.com/Looooong
 [@lubosch]: https://github.com/lubosch
 [@markstory]: https://github.com/markstory
+[@mattbrictson]: https://github.com/mattbrictson
 [@mauriciopasquier]: https://github.com/mauriciopasquier
 [@mconiglio]: https://github.com/mconiglio
 [@mgrunberg]: https://github.com/mgrunberg
@@ -972,6 +1084,7 @@ Please check [0-6-stable] for previous changes.
 [@orkhan]: https://github.com/orkhan
 [@panasyuk]: https://github.com/panasyuk
 [@PChambino]: https://github.com/PChambino
+[@plashchynski]: https://github.com/plashchynski
 [@potatosalad]: https://github.com/potatosalad
 [@pranas]: https://github.com/pranas
 [@ray-curran]: https://github.com/ray-curran

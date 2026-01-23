@@ -6,6 +6,7 @@ inherit_mode:
 
 require:
   - rubocop-capybara
+plugins:
   - rubocop-packaging
   - rubocop-performance
   - rubocop-rails
@@ -334,7 +335,7 @@ Layout/IndentationConsistency:
 Layout/IndentationWidth:
   Enabled: true
 
-Naming/PredicateName:
+Naming/PredicatePrefix:
   Enabled: true
 
   ForbiddenPrefixes:

@@ -119,7 +119,7 @@ module ActiveAdmin
       contents = without_wrapper { inputs(options, &form_block) }
       contents ||= "".html_safe
 
-      js = js_for_has_many(options[:class], &form_block)
+      js = new_record ? js_for_has_many(options[:class], &form_block) : ""
       contents << js
     end
 

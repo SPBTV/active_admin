@@ -30,6 +30,7 @@ append_file "db/seeds.rb", "\n\n" + <<~RUBY
     "Vivamus vel arcu eget lacus luctus tempus."
   ]
 
+append_file "db/seeds.rb", "\n\n" + <<-RUBY.strip_heredoc
   user_data = ["Jimi Hendrix", "Jimmy Page", "Yngwie Malmsteen", "Eric Clapton", "Kirk Hammett"].map do |name|
     first, last = name.split(" ")
     {
@@ -53,13 +54,13 @@ append_file "db/seeds.rb", "\n\n" + <<~RUBY
 
   published_at_values = [5.days.ago, 1.day.ago, nil, 3.days.from_now]
 
-  post_data = Array.new(800) do |i|
+  post_data = Array.new(100) do |i|
     user_id = user_ids[i % user_ids.size]
     category_id = category_ids[i % category_ids.size]
     published = published_at_values[i % published_at_values.size]
     {
       title: "Blog Post \#{i}",
-      body: texts.shuffle.slice(0, rand(1..texts.size)).join(" "),
+      body: "A sample blog post \#{i}.",
       custom_category_id: category_id,
       published_date: published,
       author_id: user_id,
@@ -77,13 +78,12 @@ append_file "db/seeds.rb", "\n\n" + <<~RUBY
   end
   Tagging.insert_all(tagging_data)
 
-  admin_user_id = AdminUser.first.id
-  comment_data = Array.new(800) do |i|
+  comment_data = Array.new(80) do |i|
     {
       namespace: :admin,
       author_type: "AdminUser",
-      author_id: admin_user_id,
-      body: texts.shuffle.slice(0, rand(1..texts.size)).join(" "),
+      author_id: AdminUser.first.id,
+      body: "Test comment \#{i}",
       resource_type: "Category",
       resource_id: category_ids.sample
     }
@@ -92,6 +92,3 @@ append_file "db/seeds.rb", "\n\n" + <<~RUBY
 RUBY
 
 rails_command "db:seed"
-
-git add: "."
-git commit: "-m 'Bare application with data'"

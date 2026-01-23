@@ -22,20 +22,34 @@ module ActiveAdmin
       FileUtils.mkdir_p base_dir
       args = %W(
         -m spec/support/#{template}.rb
+        --skip-action-cable
         --skip-action-mailbox
         --skip-action-text
         --skip-active-storage
-        --skip-action-cable
         --skip-bootsnap
+        --skip-brakeman
         --skip-bundle
+        --skip-bundler-audit
+        --skip-ci
+        --skip-coffee
+        --skip-decrypted-diffs
+        --skip-dev-gems
+        --skip-docker
         --skip-gemfile
+        --skip-git
         --skip-hotwire
+        --skip-javascript
         --skip-jbuilder
+        --skip-kamal
         --skip-listen
+        --skip-rubocop
+        --skip-solid
         --skip-spring
-        --skip-turbolinks
-        --skip-test
         --skip-system-test
+        --skip-test
+        --skip-test-unit
+        --skip-thruster
+        --skip-turbolinks
         --skip-webpack-install
         --javascript=esbuild
         --css=tailwind
@@ -74,7 +88,7 @@ module ActiveAdmin
     end
 
     def app_name
-      return "rails_71" if main_app?
+      return "rails_81" if main_app?
 
       File.basename(File.dirname(gemfile))
     end
