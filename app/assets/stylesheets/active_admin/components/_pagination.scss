@@ -37,11 +37,14 @@
 .pagination_per_page {
   float: right;
   margin-left: 4px;
-  // select {
-  //   @include light-button;
-  //   @include rounded(0px);
-  //   padding: 1px 5px;
-  // }
+  select {
+    @include light-button;
+
+    & {
+      @include rounded(0px);
+      padding: 1px 5px;
+    }
+  }
 }
 
 .comments {
